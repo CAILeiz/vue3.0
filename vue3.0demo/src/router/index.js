@@ -18,6 +18,7 @@ const routes = [
 ]
 
 const router = createRouter({
+  linkActiveClass: "active", // 路由点击时的颜色
   history: createWebHashHistory(),
   routes
 })

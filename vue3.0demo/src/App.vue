@@ -1,26 +1,19 @@
 <template>
   <div id="nav">
-    <div></div>
-    <div class="nav-bottom">
-      <a href="">
-        <i class="iconfont icontongcxunlu1"></i>
-        <label>首页</label>
-      </a>
-        <a href="">
-        <i class="iconfont icontongcxunlu1"></i>
-        <label>首页</label>
-      </a>
-        <a href="">
-        <i class="iconfont icontongcxunlu1"></i>
-        <label>首页</label>
-      </a>
-        <a href="">
-        <i class="iconfont icontongcxunlu1"></i>
-        <label>首页</label>
-      </a>
+    <div>
+      <router-view />
+      <navBottom />
     </div>
   </div>
 </template>
+<script>
+import navBottom from "./views/navBottom.vue"
+export default {
+  components: {
+    navBottom
+  }
+}
+</script>
 
 <style>
 @import "./assets/css/index.css";
@@ -31,16 +24,35 @@
   text-align: center;
   color: #2c3e50;
 }
-#nav {
+/* #nav {
   padding: 30px;
-}
+} */
 
-#nav a {
+/* #nav a {
   font-weight: bold;
   color: #2c3e50;
-}
+} */
 
-#nav a.router-link-exact-active {
+/* #nav a.router-link-exact-active {
   color: #42b983;
+} */
+.nav-bottom {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  border-top: 1px solid rgb(194, 190, 190);
+  background-color: #000;
+  color: #fff;
+}
+.nav-bottom > span {
+  flex: 1;
+  text-align: center;
+  line-height: 40px;
+}
+.active {
+  color: yellow !important;
 }
 </style>

@@ -1,20 +1,20 @@
 <template>
   <div class="home">
-    <banner />
-    <commonNav />
-    <list />
+    <div class="list">
+      <div class="con" v-for="(item, index) in list" :key="index">
+        <div>
+          {{ item.title }} : {{ item.price }}
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src 
-import banner from "@/components/banner.vue"; 
-import commonNav from "@/components/commonNav.vue";
-import list from "@/components/list.vue";
-import { reactive, toRefs, provide } from "vue";
+import { reactive, toRefs } from "vue";
 export default {
   name: "Home",
-  components: { banner, commonNav, list },
   setup(props, context) {
     let state = reactive({
       list: [
@@ -35,38 +35,13 @@ export default {
           price: "10",
         },
       ],
-      bannerList: [
-        require("../assets/img/1.png"),
-        require("../assets/img/2.png"),
-        require("../assets/img/3.png"),
-      ],
       n: 0,
     });
-    provide("list", state.bannerList)
     return { ...toRefs(state) };
   },
 };
 </script>
 <style>
-.home {
-  width: 100%;
-}
-.category {
-  float: left;
-  width: 25%;
-  box-sizing: border-box;
-  padding: 4px 10px;
-  text-align: center;
-}
-.category > i {
-  margin-top: 2px;
-  display: inline-block;
-  border-radius: 10px;
-  width: 98%;
-  font-size: 30px;
-  border: 1px solid black;
-}
-.index-category::after,
 .list::after {
   content: "";
   display: block;

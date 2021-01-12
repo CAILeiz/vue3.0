@@ -1,9 +1,11 @@
 <template>
   <div class="home">
-    <div class="list">
-      <div class="con" v-for="(item, index) in list" :key="index">
+    <div class="list" style="padding-bottom: 52px">
+      <div class="con" v-for="item in conList" :key="item.id">
         <div>
-          {{ item.title }} : {{ item.price }}
+          <router-link :to="'/detail/'+ item.id">
+          {{item.title}} --- {{item.price}}
+          </router-link>
         </div>
       </div>
     </div>
@@ -12,10 +14,11 @@
 
 <script>
 // @ is an alias to /src 
-import { reactive, toRefs } from "vue";
+import { reactive, toRefs, inject } from "vue";
 export default {
   name: "Home",
-  setup(props, context) {
+  setup(context) {
+    console.log("context", context);
     let state = reactive({
       list: [
         {
@@ -36,6 +39,7 @@ export default {
         },
       ],
       n: 0,
+      conList: inject("conList")
     });
     return { ...toRefs(state) };
   },

@@ -17,7 +17,7 @@
 // @ is an alias to /src 
 import { onMounted, reactive, toRefs } from "vue";
 export default {
-  name: "nav",
+  name: "commonNav",
   components: {  },
   setup(props, context) {
     let state = reactive({
